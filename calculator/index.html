@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcultor</title>
+    <link rel="stylesheet" href="asset/style.css">
+    
+</head>
+<body>
+    <div class="container">
+       <div class="calculator">
+           <div class="display-container">
+               <input type="text" name="display" id="display" class="display" readonly>
+           </div>
+           <div class="btn-container">
+              <button type="button" class="btns" id="c" onclick = "clearDisplay()" >C</button>
+              <button type="button" class="btns" id="one" onclick = "updateDisplay('1')">1</button>
+              <button type="button" class="btns" id="two" onclick = "updateDisplay('2')">2</button>
+              <button type="button" class="btns" id="plus" onclick = "updateDisplay('+')">+</button>
+              <button type="button" class="btns" id="three" onclick = "updateDisplay('3')">3</button>
+              <button type="button" class="btns" id="four" onclick = "updateDisplay('4')">4</button>
+             <button type="button" class="btns" id="sub" onclick = "updateDisplay('-')">-</button>
+            <button type="button" class="btns" id="five" onclick = "updateDisplay('5')">5</button>
+            <button type="button" class="btns" id="six" onclick = "updateDisplay('6')">6</button>
+            <button type="button" class="btns" id="div" onclick = "updateDisplay('/')">/</button>
+            <button type="button" class="btns" id="seven" onclick = "updateDisplay('7')">7</button>
+            <button type="button" class="btns" id="eight" onclick = "updateDisplay('8')">8</button>
+            <button type="button" class="btns" id="multi" onclick = "updateDisplay('*')">*</button>
+            <button type="button" class="btns" id="nine" onclick = "updateDisplay('9')" >9</button>
+            <button type="button" class="btns" id="zero" onclick = "updateDisplay('0')">0</button>
+            <button type="button" class="btns" id="point" onclick = "updateDisplay('.')">.</button>
+            <button type="button" class="btns" id="equal" onclick = "calculate()">=</button>
+           </div>
+       </div>
+    </div>
+    <script>
+        let calculatedisplay = '';
+        function updateDisplay(value){
+        calculatedisplay += value;
+        document.querySelector('#display').value = calculatedisplay;
+        }
+
+       function clearDisplay(){
+        calculatedisplay = "";
+        document.querySelector('#display').value = calculatedisplay;
+        }
+
+        function calculate(){
+           let result = eval(calculatedisplay).toString();
+           calculatedisplay = result;
+           document.querySelector('#display').value = calculatedisplay;
+            
+        }
+        
+        
+        document.addEventListener('keydown',function(event){
+           let key = event.key;
+           if(key === '1'){
+             updateDisplay('1');
+           }else if(key === '2'){
+            updateDisplay('2');
+           }else if(key ==='3'){
+            updateDisplay('3');
+           }else if(key ==='4'){
+            updateDisplay('4');
+           }else if(key ==='5'){
+            updateDisplay('5');
+           }else if(key ==='6'){
+            updateDisplay('6');
+           }else if(key ==='7'){
+            updateDisplay('7');
+           }else if(key ==='8'){
+            updateDisplay('8');
+           }else if(key ==='9'){
+            updateDisplay('9');
+           }else if(key ==='0'){
+            updateDisplay('0');
+           }else if(key ==='.'){
+            updateDisplay('.');
+           }else if(key ==='+'){
+            updateDisplay('+');
+           }else if(key ==='-'){
+            updateDisplay('-');
+           }else if(key ==='*'){
+            updateDisplay('*');
+           }else if(key ==='/'){
+            updateDisplay('/');
+           }else if(key ==='Enter'){
+            calculate();
+           }else if(key ==='Backspace'){
+            clearDisplay();
+           }
+        });
+        
+    </script>
+</body>
+</html>
