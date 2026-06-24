@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Button Game</title>
+</head>
+<body>
+    <h1 style="text-align: center;font-size: 50px;">Bat Ball Stump Game</h1>
+    <div style="text-align: center;">
+    <button type="button" onclick="
+       let computerMove = computerChoice();
+       let resultuser = winninguser(); 
+
+
+
+
+        
+        ">Bat</button>
+    <button type="button"
+    onclick="
+       let computerMove = computerChoice();
+       let resultuser = winninguser();
+    
+        "
+    >Ball</button>
+    <button type="button"
+    onclick="
+      let computerMove = computerChoice();
+   let resultuser = winninguser();
+       
+
+         "
+    >Stump</button>
+    </div>
+
+
+
+    <script>
+      function computerChoice(){
+         let randomNum = Math.random();
+       if(randomNum > 0 && randomNum<=1){
+           return 'Bat';
+       }else if(randomNum > 1 && randomNum<=2){
+          return  'Ball';
+
+       }else{
+          return 'Stamp';
+       }
+      }
+
+      function winninguser(computerMove){
+        let resultuser;
+        
+        if(computerMove=='Bat'){
+       if(computerMove === 'Ball'){
+         return 'User Has Won';
+         
+       }else if(computerMove === 'Bat'){
+           return 'tie tie fish';
+       }else{
+         return 'Computer Has Won';
+       }
+
+        }else if(computerMove=='Ball'){
+        if(computerMove === 'Ball'){
+         return 'tie tie fish';
+       }else if(computerMove === 'Bat'){
+          return 'Computer Won';
+       }else{
+        return 'user Won';
+       }
+        }else{
+        if(computerMove === 'Ball'){
+         return 'Computer Won';
+       }else if(computerMove === 'Bat'){
+           return 'user Won ';
+       }else{
+        return 'tie tie fish';
+       }
+        }
+
+        
+      }
+
+      function showResult(computerMove,resultuser){
+        alert(`You have Choose Bat - Computer have Choose ${computerMove} and ${resultuser}`);
+      }
+    </script>
+</body>
+</html>
