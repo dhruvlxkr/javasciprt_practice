@@ -8,30 +8,9 @@
 <body>
     <h1 style="text-align: center;font-size: 50px;">Bat Ball Stump Game</h1>
     <div style="text-align: center;">
-    <button type="button" onclick="
-       let computerMove = computerChoice();
-       let resultuser = winninguser(); 
-
-
-
-
-        
-        ">Bat</button>
-    <button type="button"
-    onclick="
-       let computerMove = computerChoice();
-       let resultuser = winninguser();
-    
-        "
-    >Ball</button>
-    <button type="button"
-    onclick="
-      let computerMove = computerChoice();
-   let resultuser = winninguser();
-       
-
-         "
-    >Stump</button>
+    <button type="button" onclick="playGame('Bat')">Bat</button>
+    <button type="button" onclick="playGame('Ball')">Ball</button>
+    <button type="button" onclick="playGame('Stump')">Stump</button>
     </div>
 
 
@@ -39,52 +18,57 @@
     <script>
       function computerChoice(){
          let randomNum = Math.random();
-       if(randomNum > 0 && randomNum<=1){
+         console.log(randomNum);
+       if(randomNum < 1/3){
            return 'Bat';
-       }else if(randomNum > 1 && randomNum<=2){
+       }else if(randomNum < 2/3){
           return  'Ball';
 
        }else{
-          return 'Stamp';
+          return 'Stump';
        }
       }
 
-      function winninguser(computerMove){
+      function winninguser(usermove,computerMove){
         let resultuser;
         
-        if(computerMove=='Bat'){
+        if(usermove=='Bat'){
        if(computerMove === 'Ball'){
          return 'User Has Won';
          
        }else if(computerMove === 'Bat'){
            return 'tie tie fish';
        }else{
-         return 'Computer Has Won';
+         return 'Computer Won';
        }
 
-        }else if(computerMove=='Ball'){
+        }else if(usermove=='Ball'){
         if(computerMove === 'Ball'){
          return 'tie tie fish';
        }else if(computerMove === 'Bat'){
           return 'Computer Won';
        }else{
-        return 'user Won';
+        return 'User Has Won';
        }
         }else{
         if(computerMove === 'Ball'){
          return 'Computer Won';
        }else if(computerMove === 'Bat'){
-           return 'user Won ';
+           return 'User Has Won ';
        }else{
-        return 'tie tie fish';
+        return 'tie tie fish';  
        }
         }
-
-        
       }
 
-      function showResult(computerMove,resultuser){
-        alert(`You have Choose Bat - Computer have Choose ${computerMove} and ${resultuser}`);
+      function showResult(usermove,computerMove,resultuser){
+        alert(`You have Choose ${usermove} - Computer have Choose ${computerMove} and ${resultuser}`);
+      }
+
+      function playGame(usermove){
+         let computerMove = computerChoice();
+       let resultuser = winninguser(usermove,computerMove); 
+       showResult(usermove,computerMove,resultuser)
       }
     </script>
 </body>
