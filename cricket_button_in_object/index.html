@@ -20,6 +20,9 @@
           lost : 0,
           tie : 0,
           win : 0,
+          displayscore:function (){
+          return `win:${this.win}  lost :${this.lost}  tie :${this.tie}`
+          }
       }
       function computerChoice(){
          let randomNum = Math.random();
@@ -77,9 +80,7 @@
 
       function showResult(usermove,computerMove,resultuser){
         alert(`You have Choose ${usermove} - Computer have Choose ${computerMove} and ${resultuser}
-        
-        win :- ${score.win}  lost :- ${score.lost} tie :- ${score.tie}
-        
+        ${score.displayscore()}
         `);
       }
 
