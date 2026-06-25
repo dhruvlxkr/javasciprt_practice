@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Button Game</title>
+</head>
+<body>
+    <h1 style="text-align: center;font-size: 50px;">Bat Ball Stump Game</h1>
+    <div style="text-align: center;">
+    <button type="button" onclick="playGame('Bat')">Bat</button>
+    <button type="button" onclick="playGame('Ball')">Ball</button>
+    <button type="button" onclick="playGame('Stump')">Stump</button>
+    </div>
+
+
+
+    <script>
+      let score = {
+          lost : 0,
+          tie : 0,
+          win : 0,
+      }
+      function computerChoice(){
+         let randomNum = Math.random();
+         console.log(randomNum);
+       if(randomNum < 1/3){
+           return 'Bat';
+       }else if(randomNum < 2/3){
+          return  'Ball';
+
+       }else{
+          return 'Stump';
+       }
+      }
+
+      function winninguser(usermove,computerMove){
+        let resultuser;
+        
+        if(usermove=='Bat'){
+       if(computerMove === 'Ball'){
+        score.win++
+         return 'User Has Won';
+         
+       }else if(computerMove === 'Bat'){
+        score.tie++
+           return 'tie tie fish';
+       }else{
+        score.lost++
+         return 'Computer Won';
+       }
+
+        }else if(usermove=='Ball'){
+        if(computerMove === 'Ball'){
+          score.tie++
+         return 'tie tie fish';
+       }else if(computerMove === 'Bat'){
+        score.lost++
+          return 'Computer Won';
+       }else{
+        score.win++
+        return 'User Has Won';
+       }
+        }else{
+        if(computerMove === 'Ball'){
+          score.lost++
+         return 'Computer Won';
+       }else if(computerMove === 'Bat'){
+        score.win++
+           return 'User Has Won ';
+       }else{
+        score.tie++
+        return 'tie tie fish';  
+       }
+        }
+      }
+
+      function showResult(usermove,computerMove,resultuser){
+        alert(`You have Choose ${usermove} - Computer have Choose ${computerMove} and ${resultuser}
+        
+        win :- ${score.win}  lost :- ${score.lost} tie :- ${score.tie}
+        
+        `);
+      }
+
+      function playGame(usermove){
+         let computerMove = computerChoice();
+       let resultuser = winninguser(usermove,computerMove); 
+       showResult(usermove,computerMove,resultuser)
+      }
+    </script>
+</body>
+</html>
